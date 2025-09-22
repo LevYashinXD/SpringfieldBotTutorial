@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ER:LC Bot - Operations Manual</title>
+    <style>
+        :root {
+            --bg-color: #111827;
+            --card-color: #1F2937;
+            --primary-color: #3B82F6;
+            --text-color: #E5E7EB;
+            --header-color: #FFFFFF;
+            --subtle-text: #9CA3AF;
+            --border-color: #374151;
+            --code-bg: #0d1117;
+            --gamedev-color: #EF4444;
+            --owner-color: #F59E0B;
+            --admin-color: #3B82F6;
+            --trainee-color: #10B981;
+            --everyone-color: #6B7280;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            border-top: 4px solid var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        header h1 {
+            color: var(--header-color);
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--subtle-text);
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--header-color);
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            color: var(--header-color);
+            font-weight: 600;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .command-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .command-card {
+            background-color: var(--card-color);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--everyone-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .command-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+        }
+
+        .command-card.gamedev { border-left-color: var(--gamedev-color); }
+        .command-card.owner { border-left-color: var(--owner-color); }
+        .command-card.admin { border-left-color: var(--admin-color); }
+        .command-card.trainee { border-left-color: var(--trainee-color); }
+
+        .command-card h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--header-color);
+            margin: 0 0 0.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .command-card p.description {
+            color: var(--subtle-text);
+            margin-bottom: 1rem;
+            flex-grow: 1;
+            font-size: 0.95rem;
+        }
+        
+        .permission-badge {
+            font-size: 0.8rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .gamedev-badge { background-color: var(--gamedev-color); }
+        .owner-badge { background-color: var(--owner-color); }
+        .admin-badge { background-color: var(--admin-color); }
+        .trainee-badge { background-color: var(--trainee-color); }
+        
+        .usage {
+            font-weight: 600;
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        code {
+            background-color: var(--code-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 0.2em 0.5em;
+            font-family: "Fira Code", "Consolas", monospace;
+            font-size: 0.9em;
+            color: #c9ccd1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>🚔 ER:LC Bot Field Manual</h1>
+            <p>Official operations guide for the Springfield RP automation & management unit.</p>
+        </header>
+
+        <section id="everyone">
+            <h2>🌍 Public Access Commands</h2>
+            <div class="command-grid">
+                <div class="command-card"><h4>/server</h4><p class="description">Fetches a detailed status report of the game server, including player count and server settings.</p><p class="usage">Usage: <code>/server</code></p></div>
+                <div class="command-card"><h4>/players</h4><p class="description">Displays a live manifest of all personnel currently active in the server, with team and callsign details.</p><p class="usage">Usage: <code>/players</code></p></div>
+                <div class="command-card"><h4>/roster</h4><p class="description">Provides a clear roster of all active personnel, organized by their assigned department/team.</p><p class="usage">Usage: <code>/roster</code></p></div>
+                <div class="command-card"><h4>/vehicles</h4><p class="description">Lists all currently deployed vehicles in the server and their registered owners.</p><p class="usage">Usage: <code>/vehicles</code></p></div>
+                <div class="command-card"><h4>/queue</h4><p class="description">Shows a list of personnel awaiting entry into the server.</p><p class="usage">Usage: <code>/queue</code></p></div>
+                <div class="command-card"><h4>/ticket</h4><p class="description">Opens a secure, private channel to communicate with staff. You must select a category for your report.</p><p class="usage">Usage: <code>/ticket category:[Choose from list]</code></p></div>
+                <div class="command-card"><h4>/howtosts</h4><p class="description">Displays the standard operating procedure for conducting a Side-to-Side (STS) event.</p><p class="usage">Usage: <code>/howtosts</code></p></div>
+            </div>
+        </section>
+
+        <section id="staff">
+            <h2>🛡️ Restricted Staff Commands</h2>
+            
+            <h3>Trainee Level Clearance <span class="permission-badge trainee-badge">Trainee+</span></h3>
+            <div class="command-grid">
+                <div class="command-card trainee"><h4>/requesttraining</h4><p class="description">Submits a formal request to Command Staff for a training session. Must include your availability.</p><p class="usage">Usage: <code>/requesttraining availability:Weekends after 5 PM EST</code></p></div>
+            </div>
+
+            <h3>Admin Level Clearance <span class="permission-badge admin-badge">Admin+</span></h3>
+            <div class="command-grid">
+                <div class="command-card admin"><h4>/promote</h4><p class="description">Assigns a Discord role to a user. Cannot assign roles higher than your own.</p><p class="usage">Usage: <code>/promote user:@User role:@Role</code></p></div>
+                <div class="command-card admin"><h4>/demote</h4><p class="description">Removes a Discord role from a user. A reason is required for the log.</p><p class="usage">Usage: <code>/demote user:@User role:@Role reason:Inactivity</code></p></div>
+                <div class="command-card admin"><h4>/kick</h4><p class="description">Removes a player from the game server for a minor infraction.</p><p class="usage">Usage: <code>/kick player_name:RobloxUser reason:FRP</code></p></div>
+                <div class="command-card admin"><h4>/ban</h4><p class="description">Permanently removes a player from the game server for a major infraction.</p><p class="usage">Usage: <code>/ban player_name:RobloxUser reason:Exploiting</code></p></div>
+                <div class="command-card admin"><h4>/banlist</h4><p class="description">Retrieves the complete list of all players banned from the game server.</p><p class="usage">Usage: <code>/banlist</code></p></div>
+                <div class="command-card admin"><h4>/whois</h4><p class="description">Conducts a background check on a player, showing their current status, team, and ban history.</p><p class="usage">Usage: <code>/whois player_name:RobloxUser</code></p></div>
+                <div class="command-card admin"><h4>/ticketadmin</h4><p class="description">Management toolkit for support tickets (close, add/remove user).</p><p class="usage">Usage: <code>/ticketadmin close</code></p></div>
+            </div>
+
+            <h3>Owner Level Clearance <span class="permission-badge owner-badge">Owner+</span></h3>
+            <div class="command-grid">
+                <div class="command-card owner"><h4>/hire</h4><p class="description">Onboards a new staff member, assigning the Trainee role and sending a welcome notification.</p><p class="usage">Usage: <code>/hire user:@NewStaff reason:Passed interview</code></p></div>
+                <div class="command-card owner"><h4>/decline</h4><p class="description">Formally declines a staff applicant, sending a notification with the reason provided.</p><p class="usage">Usage: <code>/decline user:@Applicant reason:Not a good fit</code></p></div>
+                <div class="command-card owner"><h4>/eventcreate</h4><p class="description">Opens the event creation utility to define or update a step-by-step event sequence.</p><p class="usage">Usage: <code>/eventcreate</code></p></div>
+                <div class="command-card owner"><h4>/eventstart</h4><p class="description">Initiates a pre-saved event, deploying the interactive control panel.</p><p class="usage">Usage: <code>/eventstart</code></p></div>
+                <div class="command-card owner"><h4>/announce</h4><p class="description">Broadcasts a high-priority announcement to the entire game server.</p><p class="usage">Usage: <code>/announce message:Server restart in 5 mins.</code></p></div>
+                <div class="command-card owner"><h4>/run</h4><p class="description">Executes a raw command on the game server. For advanced use only.</p><p class="usage">Usage: <code>/run command_to_run::m Test message.</code></p></div>
+                <div class="command-card owner"><h4>/tp</h4><p class="description">Relocates one player to another player's position in-game.</p><p class="usage">Usage: <code>/tp player1:UserA player2:UserB</code></p></div>
+                <div class="command-card owner"><h4>/addadmin & /addmod</h4><p class="description">Manages bot permissions, promoting users to Admin or Mod.</p><p class="usage">Usage: <code>/addadmin user:@StaffMember</code></p></div>
+            </div>
+
+            <h3>System Developer Clearance <span class="permission-badge gamedev-badge">GameDev</span></h3>
+            <div class="command-grid">
+                <div class="command-card gamedev"><h4>/addowner & /removeowner</h4><p class="description">Manages top-level bot permissions for Owners.</p><p class="usage">Usage: <code>/addowner user:@HeadAdmin</code></p></div>
+                <div class="command-card gamedev"><h4>/sync</h4><p class="description">Manually forces a re-synchronization of all bot commands with Discord's API.</p><p class="usage">Usage: <code>/sync</code></p></div>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
